@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "HCEGuard",
+  "theme": "luma",
+  "colors": {
+    "primary": "#F53862",
+    "light": "#F8F9FC",
+    "dark": "#252626"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/Black-09/HCEGUARD"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Using HCEGuard",
+            "pages": [
+              "guides/login",
+              "guides/halo-integration",
+              "guides/settings",
+              "guides/servers",
+              "guides/feedback"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "account/registration",
+              "account/otp",
+              "account/session-management"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/common-issues",
+              "troubleshooting/halo-integration-issues",
+              "troubleshooting/faq"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

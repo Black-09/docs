@@ -1,0 +1,43 @@
+---
+title: "What is HCEGuard? Player Authentication for Halo CE"
+description: "HCEGuard is a Windows desktop app that authenticates players on Halo CE servers using OTP codes, preventing unauthorized access and credential sharing."
+---
+
+HCEGuard is a Windows desktop application that brings secure, rolling-code authentication to Halo CE multiplayer servers. Players register once and then sign in with a nickname and a 6-digit one-time password (OTP) that changes with every session — so unauthorized players cannot reuse stolen credentials or impersonate others. Server administrators get reliable identity control without requiring complex infrastructure on the player's side.
+
+## Who HCEGuard is for
+
+HCEGuard is for **players** who want to join protected Halo CE servers and for **server administrators** who want verifiable player identities. If you play on a server that requires HCEGuard, you need to create an account and keep the app running while you play. If you run a server, HCEGuard's integration layer handles validation automatically once players are authenticated.
+
+## Key features
+
+<CardGroup cols={2}>
+  <Card title="OTP-based login" icon="key">
+    Sign in with your nickname and a 6-digit one-time password. Codes change every session, so credentials cannot be reused.
+  </Card>
+  <Card title="Halo CE integration" icon="gamepad">
+    Enable the optional Halo CE integration to let HCEGuard validate your session with the game automatically. Launch HCEGuard first, then Halo CE.
+  </Card>
+  <Card title="Server validation" icon="shield-check">
+    HCEGuard syncs with the server's allowed-player lists after login, so only authenticated, approved players can participate.
+  </Card>
+  <Card title="Multi-language support" icon="language">
+    The app ships with English and Spanish interfaces. Switch languages at any time from **Settings** — your preference is saved automatically.
+  </Card>
+  <Card title="Dark and light themes" icon="sun">
+    Choose between a dark and a light theme to match your desktop. The theme preference persists across restarts.
+  </Card>
+  <Card title="Remember me" icon="bookmark">
+    Check **Remember me** on the login screen to have your nickname filled in automatically the next time you open the app.
+  </Card>
+</CardGroup>
+
+## How authentication works
+
+HCEGuard uses a server-side account linked to your nickname. When you sign in, the app sends your nickname and OTP to the HCEGuard service for verification. On success, the app receives a session token and activates your local session. If Halo CE integration is enabled, HCEGuard immediately syncs the validation files your game client needs before you launch Halo CE.
+
+After three consecutive failed login attempts the app displays a CAPTCHA challenge to prevent automated access attempts. Once you complete the CAPTCHA and sign in successfully, the counter resets.
+
+<Note>
+  HCEGuard only runs on Windows. It does not modify game files, inject code into running processes, or install system drivers.
+</Note>

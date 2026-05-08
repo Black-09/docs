@@ -1,0 +1,56 @@
+---
+title: "Download and Install HCEGuard on Windows"
+description: "Install HCEGuard on your Windows PC to join OTP-protected Halo CE servers. Covers system requirements, download, and first-launch setup."
+---
+
+HCEGuard is a 64-bit Windows desktop application built on .NET 8. This page covers everything you need to get the app installed and open on your PC. Before you can sign in, you need a registered account — see [Account registration](/account/registration) if you have not created one yet.
+
+## System requirements
+
+| Requirement | Minimum |
+|---|---|
+| Operating system | Windows 10 (64-bit) or later |
+| Runtime | .NET 8 Desktop Runtime (x64) |
+| Architecture | 64-bit only |
+| Internet connection | Required for login and session validation |
+
+HCEGuard does not support 32-bit Windows installations.
+
+## Install steps
+
+<Steps>
+  <Step title="Install the .NET 8 Desktop Runtime">
+    HCEGuard requires the .NET 8 Desktop Runtime (x64). If you already have it installed, skip this step.
+
+    Download it from [dotnet.microsoft.com](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) — choose **.NET Desktop Runtime 8.x.x** under the **Windows x64** column. Run the installer and follow the prompts.
+  </Step>
+  <Step title="Download HCEGuard">
+    Download the latest HCEGuard release from the link provided by your server administrator, or from the official HCEGuard website at [hceguard.site](https://hceguard.site). The download is a single executable — no separate installer is required.
+  </Step>
+  <Step title="Run HCEGuard">
+    Double-click **HCEGuard.exe** to launch the application. Windows may display a SmartScreen prompt the first time you run it — click **More info** then **Run anyway** to proceed.
+
+    HCEGuard enforces a single-instance rule: if you try to open a second copy while one is already running, it will show a notification and exit.
+  </Step>
+  <Step title="Choose your language and theme">
+    On first launch, the app opens in Spanish with the dark theme. To switch to English or the light theme, open **Settings** from the title bar menu and toggle your preferred options. Your choices are saved automatically for future sessions.
+  </Step>
+</Steps>
+
+## Before you launch Halo CE
+
+<Warning>
+  Always open HCEGuard **before** starting Halo CE. If Halo CE is already running when you sign in, the Halo CE integration cannot activate correctly. You will need to close Halo CE, sign in to HCEGuard, and then reopen the game.
+</Warning>
+
+HCEGuard stores its local session and integration files in:
+
+```
+%LOCALAPPDATA%\HCEGuard\
+```
+
+Do not manually edit or delete files in this folder while HCEGuard is running. The app manages them automatically and will restore any missing files when integration is active.
+
+## Next steps
+
+Once HCEGuard is installed and open, follow the [Quick start guide](/quickstart) to sign in and enable Halo CE integration.

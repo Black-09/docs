@@ -1,0 +1,80 @@
+{
+  "projectType": "saas",
+  "projectName": "HCEGuard",
+  "projectDescription": "HCEGuard is a Windows desktop application that provides secure, OTP-based player authentication and identity management for Halo CE game servers.",
+  "theme": "luma",
+  "primaryColor": "#F53862",
+  "lightColor": "#F8F9FC",
+  "darkColor": "#252626",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Using HCEGuard",
+            "pages": [
+              "guides/login",
+              "guides/halo-integration",
+              "guides/settings",
+              "guides/servers",
+              "guides/feedback"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "account/registration",
+              "account/otp",
+              "account/session-management"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/common-issues",
+              "troubleshooting/halo-integration-issues",
+              "troubleshooting/faq"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "OTP-based secure login with rolling verification codes",
+    "Halo CE integration for server-side player validation",
+    "Automatic session management with token refresh",
+    "Multi-instance detection and integration safeguards",
+    "Dark and light theme support",
+    "Spanish and English language support",
+    "In-app feedback and support portal",
+    "Servers portal access after authentication",
+    "Captcha protection after repeated failed login attempts",
+    "Local file integrity monitoring and auto-restore"
+  ],
+  "publicApiSurface": [
+    "POST /api/login — Authenticate with nick and OTP code",
+    "POST /logout — End the current session",
+    "POST /refresh — Refresh access token using device ID",
+    "GET /api/info?nick= — Retrieve player profile information",
+    "GET /api/servers — Fetch the list of authorized server IPs",
+    "GET /api/integration/allowed-files — Whitelist of allowed DLL files",
+    "GET /api/integration/verified-files — External DLL whitelist",
+    "GET /api/integration/allowed-configs — Whitelist of allowed Lua configs",
+    "GET /api/session/local-validation — Retrieve hash for local integration",
+    "POST /api/support/access-link — Generate authenticated support URL",
+    "POST /api/server-portal/access-link — Generate authenticated servers portal URL",
+    "POST /api/feedback — Submit user feedback",
+    "GET /api/config/register-link — Fetch dynamic registration URL",
+    "GET /health — API health check"
+  ]
+}

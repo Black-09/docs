@@ -1,0 +1,44 @@
+---
+title: "HCEGuard: Secure Player Authentication for Halo CE"
+description: "HCEGuard secures Halo CE servers with OTP-based player identity verification. Sign in, enable Halo CE integration, and start playing on protected servers."
+---
+
+HCEGuard is a Windows desktop application that brings secure, rolling-code authentication to Halo CE servers. Players register once, then use a constantly changing OTP (one-time password) to sign in — eliminating unauthorized access and giving server administrators reliable identity control.
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/installation">
+    Download and install HCEGuard on your Windows PC
+  </Card>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Get up and running with your first login in minutes
+  </Card>
+  <Card title="Halo CE Integration" icon="gamepad" href="/guides/halo-integration">
+    Enable in-game validation with the Halo CE integration
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/troubleshooting/common-issues">
+    Resolve common issues and errors quickly
+  </Card>
+</CardGroup>
+
+## How HCEGuard works
+
+HCEGuard links your player identity to a secure account. When you sign in, the app verifies your OTP code against the server, generates local integration files for Halo CE, and monitors your session in real time.
+
+<Steps>
+  <Step title="Create your account">
+    Register at the HCEGuard portal to get your player account and credentials.
+  </Step>
+  <Step title="Install and launch HCEGuard">
+    Download the application, install it on Windows, and open it before starting Halo CE.
+  </Step>
+  <Step title="Sign in with your OTP">
+    Enter your nickname and the 6-digit OTP from your authenticator app or email.
+  </Step>
+  <Step title="Launch Halo CE">
+    With HCEGuard running and authenticated, open Halo CE to play on protected servers.
+  </Step>
+</Steps>
+
+<Note>
+  Always launch HCEGuard **before** opening Halo CE. Starting HCEGuard while Halo CE is already running will prevent the integration from activating correctly.
+</Note>

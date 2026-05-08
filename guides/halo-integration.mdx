@@ -1,0 +1,82 @@
+---
+title: "Enable Halo CE Integration in HCEGuard"
+description: "Enable Halo CE integration in HCEGuard to authenticate your game session, configure your installation path, and learn the correct app launch order."
+---
+
+HCEGuard's Halo CE integration connects the desktop app to your local Halo CE installation. When enabled, HCEGuard syncs your authenticated session with the game, generates the local credential files Halo CE needs, and monitors your game session in real time. This allows protected servers to confirm your identity without requiring any in-game modifications from you.
+
+## What HCEGuard does — and does not do
+
+When Halo CE integration is active, HCEGuard:
+
+- Validates the configured Halo CE installation path.
+- Generates and maintains local integration files in `%LOCALAPPDATA%\HCEGuard`.
+- Syncs your session credentials and authorized server list from the HCEGuard service.
+- Reads reports produced by Halo CE during your session.
+- Monitors for multiple Halo CE instances running simultaneously.
+
+HCEGuard does **not**:
+
+- Kill or terminate any processes.
+- Inject code into Halo CE or any other application.
+- Install drivers or kernel-level components.
+- Download or execute external binaries.
+- Modify game files.
+
+## Prerequisites
+
+Before enabling integration, confirm that:
+
+- Halo CE is installed on your computer.
+- You know the folder path where Halo CE is installed.
+- HCEGuard is installed and you have a registered account.
+
+## Set up Halo CE integration
+
+<Steps>
+  <Step title="Sign in to HCEGuard">
+    Open HCEGuard and sign in with your Nick and OTP code. Integration activates automatically after you sign in if it was already enabled. If this is your first time setting it up, continue to the next step before signing in.
+  </Step>
+
+  <Step title="Open Settings">
+    Click the **≡** menu button in the top-left corner of the app and select **Settings**.
+  </Step>
+
+  <Step title="Enable Halo CE integration">
+    Toggle the **Enable Halo CE integration** switch to the on position. The path field and Browse button below will become active.
+
+    <Warning>
+      If more than one instance of Halo CE is already running when you enable this toggle, the integration will be blocked immediately and the toggle will return to the off position. Close all extra Halo CE windows before enabling integration.
+    </Warning>
+  </Step>
+
+  <Step title="Set the Halo CE path">
+    Click **Browse** and select the folder where Halo CE is installed — the folder that contains `haloce.exe`. You can also type the path directly into the text field. HCEGuard saves the path as soon as you leave the field or confirm the folder picker.
+  </Step>
+
+  <Step title="Launch HCEGuard first, then Halo CE">
+    Close any open Halo CE windows. Sign in to HCEGuard, and only then open Halo CE.
+
+    <Warning>
+      If Halo CE is already running when you sign in, HCEGuard will block the login attempt and display an error. Close Halo CE completely, sign in to HCEGuard, and then start the game.
+    </Warning>
+  </Step>
+</Steps>
+
+## Multiple instance detection
+
+HCEGuard monitors for more than one instance of Halo CE running at the same time. If a second instance is detected at any point — before or during a session — HCEGuard will:
+
+1. Display a warning dialog.
+2. Automatically disable Halo CE integration.
+3. Close your active session and return you to the login screen.
+
+To resume, close all extra Halo CE windows so that only one instance is running, then sign in again and re-enable integration in Settings.
+
+## Disable Halo CE integration
+
+To turn off the integration, open **Settings** and toggle **Enable Halo CE integration** to the off position. HCEGuard will stop monitoring Halo CE and will not read or generate any integration files. You can still use HCEGuard without the integration active.
+
+<Note>
+  HCEGuard can function without Halo CE integration. Enable it only if you play on servers that require HCEGuard authentication.
+</Note>

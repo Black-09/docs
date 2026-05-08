@@ -1,0 +1,88 @@
+---
+title: "HCEGuard FAQ: Sessions, Files, Language, and More"
+description: "Answers to common questions about HCEGuard: do you need Halo CE installed, where are files stored, how to change language or theme, and why sessions close."
+---
+
+These questions come up regularly among new and existing HCEGuard users. If you have a question that is not covered here, you can send feedback directly from within the app via **Send Feedback** in the menu.
+
+<AccordionGroup>
+
+  <Accordion title="Do I need Halo CE installed to use HCEGuard?">
+    No. HCEGuard works as a standalone authentication tool even without Halo CE on your machine. The Halo CE integration is an optional feature — when it is disabled, HCEGuard does not look for Halo CE, does not generate integration files, and does not validate any game path.
+
+    You only need to enable the integration (in **Settings → Enable Halo CE integration**) if you want HCEGuard to interact with the game directly. The app itself shows this note on first use: "HCEGuard can work without Halo CE. Enable Halo CE integration only if you need those features."
+  </Accordion>
+
+  <Accordion title="Why do I need to open HCEGuard before Halo CE?">
+    When the Halo CE integration is enabled, HCEGuard writes local session files during login. These files (`hceguard.dat`, `ips.dat`) must exist before Halo CE starts, because the game reads them at launch to verify your session with the server.
+
+    If you start Halo CE first, those files do not exist yet, and HCEGuard will block your login attempt with the message: "For the integration to work correctly, open HCEGuard before starting Halo CE. Close Halo CE completely, sign in to HCEGuard, and then reopen the game."
+
+    The correct order is: launch HCEGuard → sign in → launch Halo CE.
+  </Accordion>
+
+  <Accordion title="What happens if I forget to close extra Halo CE instances?">
+    HCEGuard monitors running processes continuously while the integration is active. The moment it detects more than one `haloce.exe` process, it takes the following actions automatically:
+
+    1. Displays a warning dialog.
+    2. Disables the Halo CE integration.
+    3. Closes your local session immediately.
+
+    You will be returned to the login screen. To recover, close all extra Halo CE instances, re-enable the integration in **Settings**, and sign in again.
+  </Accordion>
+
+  <Accordion title="How do I change the app language?">
+    Open the menu bar and click **Language**. You will see a toggle to switch between **English** and **Español**. After switching, the interface updates immediately. You can also enable **Save language** in **Settings** so your choice is remembered across app restarts.
+  </Accordion>
+
+  <Accordion title="How do I switch between light and dark theme?">
+    Open the menu bar and click **Theme**. Toggle between **Dark** and **Light** mode. To keep your theme preference across restarts, enable **Save theme** in **Settings**.
+  </Accordion>
+
+  <Accordion title="Where does HCEGuard store its local files?">
+    HCEGuard stores its integration files in your Windows local app data folder:
+
+    ```
+    %LOCALAPPDATA%\HCEGuard\
+    ```
+
+    You can navigate there by pressing **Win + R**, typing `%LOCALAPPDATA%\HCEGuard`, and pressing Enter. The files you will find there include:
+
+    - `hceguard.dat` — your encrypted session hash used by the Halo CE integration.
+    - `ips.dat` — the authorized server list used by Halo CE during your session.
+    - `device.dat` — your encrypted device identifier.
+
+    These files are only written when the Halo CE integration is enabled and you are signed in.
+  </Accordion>
+
+  <Accordion title="What does the 'Delete local files' button in Settings do?">
+    The **Delete local files** button removes `hceguard.dat`, `ips.dat`, and `device.dat` from `%LOCALAPPDATA%\HCEGuard\`.
+
+    If the integration is currently enabled and you are signed in, HCEGuard immediately attempts to regenerate those files from the server. If the restore succeeds, you will see: "Integration is active: local files were deleted and restored automatically." If it fails, you will see a warning and can sign out and back in to trigger regeneration.
+
+    If the integration is disabled, the files are simply deleted and you will see a confirmation.
+
+    Use this button if you suspect your local integration files are corrupted or out of sync.
+  </Accordion>
+
+  <Accordion title="Why did my session close automatically?">
+    There are three situations where HCEGuard closes your session without you clicking Sign out:
+
+    1. **Multiple Halo CE instances detected** — if more than one copy of the game is running while the integration is active, HCEGuard closes the session immediately as a security measure.
+    2. **Account under review** — if your account enters review while you are signed in, the server notifies HCEGuard and the session is closed with the message: "Your account is under review. This process may take up to 24 hours."
+    3. **Account suspended** — similarly, a suspension pushed from the server will close your session with the message: "Your account has been suspended."
+
+    In all three cases, you will be returned to the login screen. The reason will be shown in a dialog before the session closes.
+  </Accordion>
+
+  <Accordion title="How long does account review take?">
+    Account review is a server-side process handled by the game server administrators. HCEGuard will display the message "Your account is under review. This process may take up to 24 hours." — and 24 hours is the stated maximum. In most cases it resolves sooner. You do not need to take any action; simply wait and try signing in again after some time has passed.
+  </Accordion>
+
+  <Accordion title="What if I can't open the registration link?">
+    If you click **Register** and the app displays "Could not open the link.", it means HCEGuard was unable to launch your default web browser automatically. This can happen if no default browser is configured in Windows or if the browser failed to start.
+
+    **Fix:** Copy the registration URL manually and paste it into your browser. You can find the link through the official HCEGuard channels or by asking a server administrator for the current registration address.
+  </Accordion>
+
+</AccordionGroup>

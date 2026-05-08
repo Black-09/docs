@@ -1,0 +1,63 @@
+---
+title: "HCEGuard Quick Start: Register, Sign In, and Play"
+description: "Step-by-step guide to create an account, sign in with your OTP, enable Halo CE integration, and start playing on a protected server in minutes."
+---
+
+This guide walks you through everything from creating your account to launching Halo CE on a protected server. The whole process takes about five minutes on a fresh install. If you have not installed HCEGuard yet, start with the [installation guide](/installation).
+
+<Steps>
+  <Step title="Register your account">
+    Open the HCEGuard registration page from the link your server administrator provides, or from the **Register** option inside the app. Fill in the required details to create your player account.
+
+    Your nickname must be alphanumeric and no longer than 11 characters — for example, `Player01` or `BlackWolf`. You will use this exact nickname every time you sign in.
+
+    <Note>
+      Registration happens on the HCEGuard web portal, not inside the desktop app. Check with your server's community for the registration link.
+    </Note>
+  </Step>
+  <Step title="Install and open HCEGuard">
+    If you have not installed HCEGuard yet, follow the [installation guide](/installation) to download the app and install the .NET 8 Desktop Runtime.
+
+    Once installed, double-click **HCEGuard.exe**. The login screen appears with two fields: **Nick** and **OTP Code**.
+  </Step>
+  <Step title="Sign in with your nickname and OTP">
+    Enter your registered nickname in the **Nick** field. Nicknames are alphanumeric and case-sensitive, with a maximum length of 11 characters.
+
+    Open your authenticator app or check the channel where your OTP is delivered, then enter the current **6-digit code** in the **OTP Code** field. OTP codes are numeric only.
+
+    Optionally, check **Remember me** to have your nickname pre-filled the next time you open HCEGuard.
+
+    Click **Enter** (or press `Enter` on your keyboard) to sign in.
+
+    <Warning>
+      After three consecutive failed login attempts, a CAPTCHA appears. Solve it to continue. The CAPTCHA resets automatically after a successful login.
+    </Warning>
+  </Step>
+  <Step title="Confirm your session is active">
+    After a successful login, the form fields disappear and the screen shows a welcome message with your nickname — for example, **Welcome, Player01** — and a confirmation that the session started successfully.
+
+    The **Sign out** button replaces the **Enter** button. Your session is now active and HCEGuard is communicating with the server in the background.
+  </Step>
+  <Step title="Enable Halo CE integration (optional)">
+    If the server you want to join requires Halo CE integration, you need to enable it and point the app to your Halo CE installation folder.
+
+    Open **Settings** from the title bar. Toggle on **Enable Halo CE integration**. Then click **Browse** next to the **Halo CE path** field and select the folder where Halo CE is installed — the folder that contains `haloce.exe`.
+
+    Once you save the path, HCEGuard generates the local validation files it needs and begins monitoring your session.
+
+    <Note>
+      If you see a warning that Halo CE is already running, close the game completely before enabling integration. HCEGuard must be signed in and integration must be active before you launch Halo CE.
+    </Note>
+  </Step>
+  <Step title="Launch Halo CE">
+    With HCEGuard running and your session active, open Halo CE normally. HCEGuard runs in the background and keeps your authentication valid while you play.
+
+    If you see a notification that Halo CE was already open when you logged in, close the game, wait a moment, and reopen it so the server validation update takes effect.
+  </Step>
+</Steps>
+
+## What happens when you sign out or close the app
+
+Clicking **Sign out** or closing HCEGuard ends your local session and notifies the server. If you close the app while a session is active, a confirmation dialog appears first. Closing the app does not ban or suspend your account — you can sign in again at any time.
+
+If more than one instance of Halo CE is detected while integration is active, HCEGuard will automatically disable the integration and end your session as a security measure. Close the extra Halo CE instances and sign in again to resume.

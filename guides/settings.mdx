@@ -1,0 +1,65 @@
+---
+title: "HCEGuard Settings: Theme, Language, and Integration"
+description: "Customize how HCEGuard looks and behaves: save your theme and language preferences, configure Halo CE integration, and manage local session files."
+---
+
+The Settings panel lets you control how HCEGuard looks, what language it uses, and how it interacts with your Halo CE installation. Open it at any time by clicking the **≡** menu button in the top-left corner of the app and selecting **Settings**.
+
+## Available settings
+
+### Save theme
+
+Saves your current Dark or Light theme preference across sessions. When this toggle is on, HCEGuard remembers which theme you last used and restores it the next time you open the app. When it is off, the app always starts with the default theme.
+
+Switch between Dark and Light from the **≡** menu under **Theme**.
+
+---
+
+### Save language
+
+Saves your current language preference (English or Español) across sessions. When this toggle is on, HCEGuard restores your chosen language on the next launch. When it is off, the app uses the default language on startup.
+
+Switch between languages from the **≡** menu under **Language**.
+
+---
+
+### Enable Halo CE integration
+
+Activates the Halo CE integration features. When enabled, HCEGuard syncs your authenticated session with the game, generates local credential files for Halo CE, and monitors your session in real time.
+
+Enabling this toggle also makes the **Halo CE path** field and **Browse** button active so you can configure the installation path.
+
+<Warning>
+  This toggle is automatically disabled and locked if more than one instance of Halo CE is detected running on your system. Close all extra Halo CE windows to unlock it.
+</Warning>
+
+For full setup instructions, see the [Halo CE Integration guide](/guides/halo-integration).
+
+---
+
+### Halo CE path
+
+The folder where Halo CE is installed. HCEGuard uses this path to validate the installation and generate the local integration files needed for server authentication.
+
+Click **Browse** to open a folder picker and navigate to your Halo CE directory — the folder that contains `haloce.exe`. You can also type the path directly into the text field; it is saved as soon as you click away from the field.
+
+This field is only active when **Enable Halo CE integration** is turned on. If you try to click Browse with integration disabled, HCEGuard will remind you to enable integration first.
+
+---
+
+### Delete local files
+
+Removes the local integration files that HCEGuard stores in `%LOCALAPPDATA%\HCEGuard`. These files include your session credential file, authorized server list, and device identifier.
+
+**When to use this button:**
+
+- If you are troubleshooting authentication or integration problems.
+- If you want to reset HCEGuard's local state after changing your installation.
+
+If Halo CE integration is currently active when you click the button, HCEGuard will delete the files and then immediately attempt to regenerate them from the server. You will see a confirmation dialog telling you whether the restore succeeded. If the restore fails, sign in again or check your internet connection.
+
+If integration is disabled, the files are deleted and not regenerated automatically.
+
+<Note>
+  HCEGuard can work without Halo CE integration. Enable integration only if you need to authenticate on servers that require it.
+</Note>

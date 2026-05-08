@@ -1,0 +1,59 @@
+---
+title: "Sign in to HCEGuard with OTP Authentication"
+description: "Learn how to sign in to HCEGuard using your Nick and a 6-digit OTP code, manage the Remember Me option, handle failed attempts, and sign out."
+---
+
+HCEGuard uses one-time password (OTP) authentication to verify your identity each time you sign in. Instead of a fixed password, you enter a 6-digit code that changes constantly, which keeps your account secure even if someone else knows your nickname. This page walks you through the complete sign-in process, including what happens after multiple failed attempts and how to sign out.
+
+## Before you begin
+
+You need a registered HCEGuard account. If you do not have one yet, use the registration link available in the app to create your account.
+
+## Sign in
+
+<Steps>
+  <Step title="Open HCEGuard">
+    Launch the HCEGuard application. The login screen shows two fields: **Nick** and **OTP Code**.
+
+    If you have Halo CE integration enabled, make sure Halo CE is **not already running** before you sign in. HCEGuard must be open first for the integration to work correctly.
+  </Step>
+
+  <Step title="Enter your Nick">
+    Type your player nickname in the **Nick** field. Nicknames are alphanumeric and can be up to 11 characters long. The field only accepts letters and numbers — any other character is automatically blocked.
+  </Step>
+
+  <Step title="Enter your OTP code">
+    Type your current 6-digit OTP code in the **OTP Code** field. The field accepts numbers only and masks your input for privacy. Retrieve the code from your authenticator or the channel your server administrator provided.
+  </Step>
+
+  <Step title="Use Remember Me (optional)">
+    Check the **Remember me** checkbox if you want HCEGuard to save your nickname so you do not have to type it on your next sign-in. Your OTP code is never saved — you must enter a fresh code every session.
+  </Step>
+
+  <Step title="Click Enter">
+    Click **Enter** (or press **Enter** on your keyboard) to submit your credentials. The button label changes to **Connecting...** while HCEGuard verifies your session. Once verified, the login form is replaced by a welcome screen showing your nickname and a **Sign out** button.
+  </Step>
+</Steps>
+
+## Failed login attempts and captcha
+
+If your credentials are incorrect, HCEGuard shows an error and counts the attempt. After **3 consecutive failed attempts**, a visual captcha appears below the OTP field.
+
+- The captcha is a 5-character alphanumeric code displayed as a distorted image.
+- Type the characters exactly as shown. The check is case-insensitive.
+- Click the **↺** refresh button to generate a new captcha image if the current one is hard to read.
+- Every subsequent failed attempt generates a new captcha automatically.
+
+You must solve the captcha correctly before HCEGuard will process your credentials. The captcha counter resets after a successful sign-in.
+
+## Sign out
+
+To end your session, click the **Sign out** button on the main screen, or open the menu and select **Sign out**. HCEGuard will close your local session and return you to the login screen. If you close the application while a session is active, HCEGuard will ask you to confirm and then close the session automatically before exiting.
+
+<Note>
+  If HCEGuard shows a maintenance message when you try to sign in, the service is temporarily unavailable. Wait a few minutes and try again.
+</Note>
+
+<Note>
+  If your account is under review, access may be suspended for up to 24 hours while the team completes verification. If your account has been suspended, contact support for more information.
+</Note>

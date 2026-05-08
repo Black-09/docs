@@ -1,0 +1,40 @@
+---
+title: "View Protected Servers in the HCEGuard Servers Portal"
+description: "Open the HCEGuard Servers portal from the app menu to browse game server information. Requires an active signed-in session to generate a secure link."
+---
+
+The Servers portal is a web-based panel where you can view and manage HCEGuard-protected Halo CE game servers. You access it directly from within the HCEGuard desktop app, which generates a secure access link tied to your active session and opens it in your default browser.
+
+## Requirements
+
+You must be signed in to HCEGuard before the Servers option becomes visible in the menu. If you are not signed in, the **Servers** menu item does not appear.
+
+## Open the Servers portal
+
+<Steps>
+  <Step title="Sign in to HCEGuard">
+    Open HCEGuard and sign in with your Nick and OTP code. The app will show your welcome screen once the session is established.
+  </Step>
+
+  <Step title="Open the menu">
+    Click the **≡** menu button in the top-left corner of the app.
+  </Step>
+
+  <Step title="Select Servers">
+    Click **Servers** in the dropdown menu. HCEGuard contacts the API to generate a personalized access link for your session and then opens the Servers portal in your default web browser.
+  </Step>
+</Steps>
+
+## Why login is required
+
+The Servers portal is authenticated. HCEGuard generates a short-lived access link using your session token so the portal can confirm your identity without requiring you to log in again in the browser. This means the link is unique to you and your current session — it cannot be shared or reused by another account.
+
+If the API is unable to generate an access link, HCEGuard will display an error message describing the issue. Check your internet connection and try again, or contact support if the problem persists.
+
+## After visiting the Servers portal
+
+If you opened the Servers portal and then want to play on a server, make sure to return to the HCEGuard app before launching Halo CE.
+
+<Note>
+  If Halo CE was already running before you signed in, close the game and reopen it after signing in so that the server validation update takes effect.
+</Note>

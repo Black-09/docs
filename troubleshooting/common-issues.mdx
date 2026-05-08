@@ -1,0 +1,86 @@
+---
+title: "Fix Common HCEGuard Login and Startup Issues"
+description: "Resolve the most frequent HCEGuard errors, including login failures, OTP and captcha problems, account status messages, and missing runtime files."
+---
+
+Most problems you encounter when starting or signing in to HCEGuard fall into a small number of categories. This page covers each one with the exact error message the app shows you, so you can identify the cause and fix it quickly without guessing.
+
+<AccordionGroup>
+
+  <Accordion title="Invalid credentials.">
+    **What you see:** The app shows "Invalid credentials." after you press Enter.
+
+    This means the combination of nick and OTP you entered did not match any active session on the server. The most common causes are:
+
+    - You mistyped your nick. Nicks are case-insensitive but must match the registered name exactly. The nick field only accepts letters and numbers (max 11 characters).
+    - Your OTP code expired before you submitted. OTP codes rotate continuously — if you waited too long after generating the code, it is no longer valid. Open your authenticator app, copy the current code, and sign in immediately.
+    - You entered an OTP from the wrong account if you have multiple authenticator entries.
+
+    **Fix:** Copy a fresh OTP from your authenticator app and try again right away. Make sure the nick field contains only the registered nickname with no extra spaces.
+  </Accordion>
+
+  <Accordion title="The OTP code must be exactly 6 digits.">
+    **What you see:** A validation dialog showing "The OTP code must be exactly 6 digits."
+
+    HCEGuard enforces a strict 6-digit numeric format for OTP codes before it even contacts the server. This error appears before any network request, so it is purely a local validation failure.
+
+    **Fix:** Make sure you are entering exactly 6 digits with no letters, spaces, or punctuation. The OTP field only accepts numeric characters — any other character is silently rejected as you type. If your authenticator shows a code with spaces (e.g. "123 456"), type only the digits.
+  </Accordion>
+
+  <Accordion title="You must enter your nick.">
+    **What you see:** A validation dialog showing "You must enter your nick."
+
+    The nick field was empty when you clicked Enter. HCEGuard validates locally before sending anything to the server.
+
+    **Fix:** Type your registered nickname in the Nick field and try again. If you enabled **Remember me** previously, the nick should fill in automatically on the next launch.
+  </Accordion>
+
+  <Accordion title="The nickname can only contain letters and numbers (max 11).">
+    **What you see:** A validation dialog showing "The nickname can only contain letters and numbers (max 11)."
+
+    The nick field rejects characters as you type — only letters (A–Z, a–z) and digits (0–9) are allowed, and the maximum length is 11 characters. This error appears if a disallowed character slipped through (for example via paste).
+
+    **Fix:** Clear the Nick field and retype your nickname using only letters and numbers. Do not paste from sources that may include spaces or special characters.
+  </Accordion>
+
+  <Accordion title="The captcha is incorrect.">
+    **What you see:** A validation dialog showing "The captcha is incorrect." after filling in the captcha challenge.
+
+    After 3 consecutive failed login attempts, HCEGuard displays a visual captcha that you must solve before submitting credentials. The captcha is case-insensitive and contains 5 characters (letters and digits). A new captcha is generated automatically after each failed attempt.
+
+    **Fix:** Read the captcha image carefully — characters are slightly rotated and spaced. Type exactly what you see. If the image is hard to read, click the **↺** (refresh) button next to the captcha to get a new one.
+  </Accordion>
+
+  <Accordion title="Your account is under review. This process may take up to 24 hours.">
+    **What you see:** "Your account is under review. This process may take up to 24 hours."
+
+    This message appears either at login or while you are already signed in (in which case your session is automatically closed). It means your account has been flagged for a manual review by server administrators.
+
+    **Fix:** Wait up to 24 hours and try signing in again. You do not need to take any action — the review is handled server-side. If the message persists beyond 24 hours, contact the server's support channel.
+  </Accordion>
+
+  <Accordion title="Your account has been suspended.">
+    **What you see:** "Your account has been suspended."
+
+    Your account has been suspended and login is blocked. Like the review message, this can appear at the login screen or mid-session, in which case HCEGuard closes the active session automatically.
+
+    **Fix:** Contact the server administrators through the appropriate support channel to understand the reason for the suspension and request a review if applicable. HCEGuard itself has no mechanism to lift a suspension — it is a server-side decision.
+  </Accordion>
+
+  <Accordion title="HCEGuard is under maintenance. Please try again later.">
+    **What you see:** A maintenance dialog with the message "HCEGuard is under maintenance. Please try again later."
+
+    Before authenticating, HCEGuard checks whether the API is reachable and healthy. If the health check fails — either because the server is offline, unreachable from your network, or undergoing maintenance — login is blocked and this dialog appears.
+
+    **Fix:** Wait a few minutes and try again. Check whether your internet connection is working normally. If the issue persists for an extended period, check official HCEGuard channels for a maintenance announcement.
+  </Accordion>
+
+  <Accordion title="Required application files are missing. Reinstall HCEGuard or contact support.">
+    **What you see:** "Required application files are missing. Reinstall HCEGuard or contact support."
+
+    HCEGuard depends on native runtime components to protect local integration files. This error means one or more of those components could not be located when HCEGuard attempted to prepare the Halo CE integration before login.
+
+    **Fix:** Reinstall HCEGuard using the official installer. If the error reappears after reinstalling, contact support — this may indicate a compatibility issue with your Windows environment or a corrupted installation.
+  </Accordion>
+
+</AccordionGroup>

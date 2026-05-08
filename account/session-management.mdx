@@ -1,0 +1,61 @@
+---
+title: "Session Management in HCEGuard: Sign In and Sign Out"
+description: "Learn what an active HCEGuard session enables, how to sign out safely, automatic token refresh, multi-instance protection, and the Remember Me option."
+---
+
+When you sign in to HCEGuard, the application establishes a secure session that ties your verified identity to your device. That session is what enables HCEGuard's server authentication and real-time features. This page explains what an active session gives you access to, how to end it cleanly, and the protections HCEGuard applies automatically.
+
+## What an active session enables
+
+After a successful login, HCEGuard transitions from the login screen to a connected state. The following features become available:
+
+- **Servers** — browse and connect to HCEGuard-protected Halo CE servers with your identity verified.
+- **Technical Support** — access the support portal directly from the app.
+- **Send Feedback** — submit bug reports, suggestions, and general feedback without leaving HCEGuard.
+
+In addition, if you have Halo CE integration enabled in Settings, HCEGuard activates it automatically after login — enabling server-level player validation while you play.
+
+## Signing out
+
+To end your session manually, click the **Sign out** button on the main screen. HCEGuard will:
+
+1. Notify the server that your session is closing.
+2. Clear your credentials from memory.
+3. Return the app to the login screen, ready for the next sign-in.
+
+Your nickname will still be pre-filled on the login screen if you have **Remember Me** enabled. Your OTP field is always cleared on sign-out — you must enter a fresh code each time.
+
+If you close HCEGuard while signed in, the app will ask you to confirm. Confirming performs the same cleanup as a manual sign-out before the application exits.
+
+## Session auto-refresh
+
+Your session token has a limited lifetime. HCEGuard refreshes it automatically in the background using your device's identity — you do not need to re-enter your credentials or take any action. The refresh is transparent and does not interrupt your session.
+
+If a refresh fails and your session can no longer be validated, HCEGuard will sign you out and return you to the login screen. In that case, simply sign in again with your nickname and a new OTP code.
+
+## Multiple Halo CE instance protection
+
+HCEGuard monitors for multiple simultaneous instances of Halo CE while you are signed in. If more than one instance is detected:
+
+1. HCEGuard pauses the Halo CE integration.
+2. Your session is signed out automatically.
+3. A warning message is shown explaining what happened.
+
+To resume, close the extra Halo CE instances and sign in to HCEGuard again. This protection exists to prevent authentication from being bypassed by running parallel game instances.
+
+## Remote account status changes
+
+If your account status changes while you are already signed in — for example, if it goes under review or is suspended — HCEGuard will detect the change in real time and end your session automatically. You will see one of the following messages:
+
+- **Under review:** "Your account is under review. This process may take up to 24 hours."
+- **Suspended:** "Your account has been suspended."
+
+After the message is dismissed, HCEGuard returns you to the login screen. You will not be able to sign in again until the account status is resolved.
+
+## Remember Me
+
+Enable the **Remember me** checkbox before signing in to have HCEGuard save your nickname. The next time you open the app, the Nick field will be pre-filled with your saved nickname.
+
+**Remember Me only saves your nickname** — your OTP code is never stored. You will always need to enter a fresh 6-digit code to sign in.
+
+To disable it, uncheck **Remember me** before or after signing in. HCEGuard will clear the saved nickname immediately.

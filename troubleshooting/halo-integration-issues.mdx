@@ -1,0 +1,97 @@
+---
+title: "Troubleshoot Halo CE Integration Problems"
+description: "Fix Halo CE integration errors in HCEGuard, including path setup, missing files, multiple instances, and blocked integration status."
+---
+
+HCEGuard's Halo CE integration generates and manages a set of local files that let game servers verify your identity in real time. When something is misconfigured — a wrong path, missing files, or multiple game instances — the integration pauses or blocks login entirely. This page explains every integration error and how to resolve it.
+
+<AccordionGroup>
+
+  <Accordion title='"Halo CE is already running" blocks login'>
+    **What you see:** A dialog titled "Halo CE is already running" with the message: "For the integration to work correctly, open HCEGuard before starting Halo CE. Close Halo CE completely, sign in to HCEGuard, and then reopen the game."
+
+    When Halo CE integration is enabled, HCEGuard must initialize its local session files **before** the game starts. If Halo CE is already running when you click Enter, HCEGuard cannot set up the integration correctly and blocks login.
+
+    **Fix:**
+    1. Close Halo CE completely. Make sure no `haloce.exe` process is running (check Task Manager if needed).
+    2. Sign in to HCEGuard.
+    3. Once you are signed in, launch Halo CE.
+
+    Always follow this order: HCEGuard first, then Halo CE.
+  </Accordion>
+
+  <Accordion title="You need to select the Halo CE folder in Settings first.">
+    **What you see:** "You need to select the Halo CE folder in Settings first."
+
+    The Halo CE integration is enabled, but no installation path has been set. HCEGuard cannot validate your Halo CE installation or write local integration files without knowing where the game is installed.
+
+    **Fix:**
+    1. Open the menu and go to **Settings**.
+    2. Under **Halo CE path**, click **Browse** and select the folder where `haloce.exe` is installed (for example, `C:\Program Files (x86)\Microsoft Games\Halo Custom Edition`).
+    3. Close Settings and try signing in again.
+
+    Note: The Browse button is only active when the Halo CE integration toggle is enabled. Make sure the toggle is on before trying to browse.
+  </Accordion>
+
+  <Accordion title="The saved Halo CE folder no longer exists or is not available.">
+    **What you see:** "The saved Halo CE folder no longer exists or is not available."
+
+    HCEGuard previously had a valid path saved, but that folder is now gone or inaccessible. This can happen if you moved or uninstalled Halo CE, or if the drive it lives on is disconnected.
+
+    **Fix:**
+    1. Open **Settings**.
+    2. Click **Browse** next to the Halo CE path field and select the current location of your Halo CE installation.
+    3. If you uninstalled Halo CE and do not plan to reinstall it, you can disable the integration toggle in Settings to avoid this check on every login.
+  </Accordion>
+
+  <Accordion title="A valid Halo CE installation was not found in the selected folder.">
+    **What you see:** "A valid Halo CE installation was not found in the selected folder."
+
+    HCEGuard found the folder you configured, but `haloce.exe` is not present in it. This usually means you selected a parent folder or an incorrect subdirectory.
+
+    **Fix:**
+    1. Open **Settings** and click **Browse**.
+    2. Navigate to the folder that contains `haloce.exe` directly — not a parent folder such as `Microsoft Games`. The correct folder typically looks like `Halo Custom Edition` and contains `haloce.exe` at its root.
+    3. Select that folder and save.
+  </Accordion>
+
+  <Accordion title="The advanced integration was not found in the selected folder (HCEGuard.dll missing).">
+    **What you see:** A warning dialog with the message: "The advanced integration was not found in the selected folder. The application can continue running, but some integration features may not be available."
+
+    Unlike the errors above, this is a **non-fatal warning**. HCEGuard found `haloce.exe` and the path is valid, but `HCEGuard.dll` is not present in the Halo CE folder. This DLL enables deeper integration features. Without it, basic session files still work but some advanced integration capabilities are unavailable.
+
+    **Fix:** Install the `HCEGuard.dll` file into your Halo CE folder. This file is distributed separately from the HCEGuard desktop app — check the official HCEGuard channels for the download. Login will still proceed without it, so you can dismiss this warning and continue if you do not need the advanced features.
+  </Accordion>
+
+  <Accordion title="Multiple Halo CE instances detected — integration disabled and session closed.">
+    **What you see:** A dialog titled "Halo CE integration paused" with the message: "More than one Halo CE instance was detected. For security, the Halo CE integration was disabled and the local session was closed. Close the extra Halo CE instances and sign in again to enable the integration."
+
+    HCEGuard continuously monitors for multiple `haloce.exe` processes. If more than one instance is detected at any time — whether before login or during an active session — the integration is immediately disabled and your local session is closed. This is a security measure to prevent the integration from operating in an ambiguous state.
+
+    **Fix:**
+    1. Check Task Manager (Ctrl+Shift+Esc) and make sure only one `haloce.exe` process is running. Close all extras.
+    2. Return to HCEGuard and sign in again. The integration toggle will have been turned off automatically — re-enable it in **Settings** after you confirm only one instance is running.
+  </Accordion>
+
+  <Accordion title="Integration is blocked in Settings due to multiple instances.">
+    **What you see:** The integration toggle in Settings is grayed out, and the status label reads: "Halo CE integration temporarily blocked: more than one Halo CE instance is open."
+
+    The Settings window checks for multiple Halo CE instances every 1.5 seconds. While more than one instance exists, the integration toggle is disabled and cannot be turned on.
+
+    **Fix:** Close all extra Halo CE windows so only one instance (or none) is running. The toggle will automatically re-enable within a few seconds. You can then turn the integration back on and sign in.
+  </Accordion>
+
+  <Accordion title="Integration is active, but not all local files could be restored.">
+    **What you see:** "Integration is active, but not all local files could be restored. Sign in again or check the connection."
+
+    This warning appears after you use the **Delete local files** button in Settings while the integration is active. HCEGuard deleted the local files and attempted to regenerate them automatically, but the restore failed — typically due to a temporary network issue.
+
+    The local integration files (`hceguard.dat`, `ips.dat`, `device.dat`) are stored in `%LOCALAPPDATA%\HCEGuard\` and must be present for the integration to work correctly.
+
+    **Fix:**
+    1. Check your internet connection.
+    2. Sign out and sign in again. On login, HCEGuard automatically regenerates any missing integration files.
+    3. If the problem persists, try **Delete local files** in Settings once more after signing in.
+  </Accordion>
+
+</AccordionGroup>
